@@ -1,0 +1,9 @@
+.titulo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.titulo h1{
+    font-size: 35px;
+    color: blueviolet;
+}
