@@ -2,19 +2,24 @@
     background: #ffffff;
     padding: 5px;
 }
-.group-input{
+.form-container{
+    width: 100%;
+    min-height: auto;
+    height: 100%;
+}
+.group{
     display: block;
     margin: 3px;
     padding-bottom: 3px;
     
 }
-.group-input>label{
+.group>label{
     font-size: 15px;
     font-weight: 300;
     color: #868686;
     margin-bottom: 5px;
 }
-.group-input>input[type=text]{
+.group>input[type=text]{
     padding: 6px;
     border: solid 1px #e8e8e8;
     width: 100%;
@@ -23,7 +28,7 @@
     font-size: 15px;
     color: rgb(121, 121, 121);
 }
-.group-input>input[type=date]{
+.group>input[type=date]{
     background: #53ffc8;
     width: 100%;
     height: 40px;
@@ -31,15 +36,15 @@
     font-size: 15px;
     transition: all 0.25s ease;
 }
-.group-input>input[type=date]:hover{
+.group>[type=date]:hover{
     background: #B1E8CD;
 }
-.group-input>select{
+.group>select{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-.group-input>select{
+.group>select{
     cursor: pointer;
     display: inline-block;
     padding: 7px 10px;
@@ -53,13 +58,13 @@
     position: relative;
     transition: all 0.25s ease;
 }
-.group-input>select::-ms-expand{
+.group>select::-ms-expand{
     display: none;
 }
-.group-input>select:hover{
+.group>select:hover{
     background: #B1E8CD;
 }
-.group-input>select i{
+.group>select i{
     position: absolute;
     right: 20px;
     top: calc(50% - 13px);
@@ -71,8 +76,16 @@
     transform: rotate(-45deg);
     transition: all 0.25s ease;
 }
-.group-input>select i:hover{
+.group>select i:hover{
     margin-top: 3px;
+}
+.group textarea{
+    width: 100%;
+    border: 0.1px solid #f3f3f3;
+    background: #f7f7f7c9;
+    border-radius: 6px;
+    color: #868686;
+    font-size: 15px;
 }
 .button{
 border: none;
@@ -81,6 +94,8 @@ border-radius: 5px;
 cursor: pointer;
 transition: .2s ease-out;
 font-size: 15px;
+cursor: pointer;
+transition: .4s;
 }
 .primario{
     background: #00e69d;
