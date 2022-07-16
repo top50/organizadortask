@@ -32,6 +32,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       fechados = new Date(fechados);
       let rest = Math.abs(fechauno - fechados);
       let days = rest / (1000 * 3600 * 24);
+      days--;
       console.log(days);
       html += `
   <div class="card" draggable="true" ondragstart="onDragStart(event);" id="${doc.id}">
