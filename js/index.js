@@ -33,6 +33,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       let rest = Math.abs(fechauno - fechados);
       let days = rest / (1000 * 3600 * 24);
       days--;
+   
       console.log(days);
       html += `
   <div class="card" draggable="true" ondragstart="onDragStart(event);" id="${doc.id}">
@@ -55,23 +56,22 @@ window.addEventListener("DOMContentLoaded", async () => {
       });
     });
 //function para eliminar una tarea utilizando u foreEach para recorrer los id correspondientes
-    const btnedit = containertask.querySelectorAll(".btn-update");
+    const btnedit = containertask.querySelectorAll(".btn-update")
+         
 
     btnedit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         const doc = await getTask(e.target.dataset.id);
-        mode.classList.toggle("mostrar-form");
-        mode.classList.toggle("ocultar-form");
         const task = doc.data();
         taskform["task-title"].value = task.title;
-        taskform["responsable"].value = task.responsable;
+        taskform["responsable"].value= task.responsable;
         taskform["nuevatarea"].value = task.nuevatarea;
         taskform["tiempo"].value = task.tiempo;
         taskform["tiempofinal"].value = task.tiempofinal;
         editStatus = true;
         id = e.target.dataset.id;
         taskform["agregar"].innerText = "Update";
-       
+        mode.classList.toggle("ocultar-form");
       });
     });
   });
@@ -81,15 +81,14 @@ const taskform = document.getElementById("task-form")
 taskform.addEventListener("submit", (e) => {
   e.preventDefault();
   const title = taskform["task-title"],
-    select = taskform["responsable"],
-    responsable=select.options[select.selectedIndex].text,
+    responsable=taskform["responsable"],
     nuevatarea = taskform["nuevatarea"],
     tiempo = taskform["tiempo"],
     tiempofinal = taskform["tiempofinal"];
   if (!editStatus) {
     savetask(
       title.value,
-      responsable,
+      responsable.text,
       nuevatarea.value,
       tiempo.value,
       tiempofinal.value
@@ -97,15 +96,23 @@ taskform.addEventListener("submit", (e) => {
   } else {
     updatetask(id, {
       title: title.value,
-      responsable: responsable,
+      responsable: responsable.value,
       nuevatarea: nuevatarea.value,
       tiempo: tiempo.value,
       tiempofinal: tiempofinal.value,
+
+      
     });
     editStatus = false;
+    title.value = "";
+    responsable.value="";
+    nuevatarea.value = "";
+    tiempo.value =" ";
+    tiempofinal.value =" ";
+    mode.classList.toggle("ocultar-form");
   }
   title.value = "";
- responsable = "";
+  responsable.value="";
   nuevatarea.value = "";
   tiempo.value =" ";
   tiempofinal.value =" ";
