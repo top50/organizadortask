@@ -60,6 +60,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     btnedit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         const doc = await getTask(e.target.dataset.id);
+        mode.classList.toggle("mostrar-form");
+        mode.classList.toggle("ocultar-form");
         const task = doc.data();
         taskform["task-title"].value = task.title;
         taskform["responsable"].value = task.responsable;
@@ -69,6 +71,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         editStatus = true;
         id = e.target.dataset.id;
         taskform["agregar"].innerText = "Update";
+       
       });
     });
   });
@@ -78,14 +81,15 @@ const taskform = document.getElementById("task-form")
 taskform.addEventListener("submit", (e) => {
   e.preventDefault();
   const title = taskform["task-title"],
-    responsable = taskform["responsable"],
+    select = taskform["responsable"],
+    responsable=select.options[select.selectedIndex].text,
     nuevatarea = taskform["nuevatarea"],
     tiempo = taskform["tiempo"],
     tiempofinal = taskform["tiempofinal"];
   if (!editStatus) {
     savetask(
       title.value,
-      responsable.value,
+      responsable,
       nuevatarea.value,
       tiempo.value,
       tiempofinal.value
@@ -93,7 +97,7 @@ taskform.addEventListener("submit", (e) => {
   } else {
     updatetask(id, {
       title: title.value,
-      responsable: responsable.value,
+      responsable: responsable,
       nuevatarea: nuevatarea.value,
       tiempo: tiempo.value,
       tiempofinal: tiempofinal.value,
@@ -101,7 +105,7 @@ taskform.addEventListener("submit", (e) => {
     editStatus = false;
   }
   title.value = "";
-  responsable.value = "";
+ responsable = "";
   nuevatarea.value = "";
   tiempo.value =" ";
   tiempofinal.value =" ";
