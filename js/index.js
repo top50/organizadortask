@@ -88,7 +88,7 @@ taskform.addEventListener("submit", (e) => {
   if (!editStatus) {
     savetask(
       title.value,
-      responsable.text,
+      responsable.value,
       nuevatarea.value,
       tiempo.value,
       tiempofinal.value
