@@ -20,8 +20,8 @@
   const db=getFirestore()
 
 
-export const savetask=(title,responsable,nuevatarea,tiempo,tiempofinal)=>
-addDoc(collection(db,'tasks'), {title,responsable,nuevatarea,tiempo,tiempofinal})
+export const savetask=(title,responsable,nuevatarea,estado,tiempo,tiempofinal)=>
+addDoc(collection(db,'tasks'), {title,responsable,nuevatarea,estado,tiempo,tiempofinal})
 export const getTasks=()=>getDocs(collection(db,'tasks'));
 
 export const onGetTasks =(callback)=>onSnapshot(collection(db,'tasks'),callback)

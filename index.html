@@ -37,20 +37,20 @@
   <main class="main">
     <div class="container">
       <div class="row">
-        <section ondragover="onDragOver(event);" ondrop="onDrop(event);">
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" id="Espera" >
           <div class="titulo">
             <h1>Tarea</h1>
           </div>
           <div id="task-tarea" class="task-tarea"></div>
         </section>
-        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" class="dropzone">
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" id="Progreso">
           <div class="titulo">
             <h1>Progreso</h1>
 
           </div>
 
         </section>
-        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" class="dropzone">
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);"  id="Finalizado">
           <div class="titulo">
             <h1>Finalizado</h1>
 
@@ -83,6 +83,16 @@
               <label for="title">Descripción de la Tarea</label>
               <textarea name="newtask" id="nuevatarea" cols="30" rows="10"></textarea>
             </div>
+            <div class="group">
+              <label for="title">Estado de la tarea</label>
+          <select name="estado" id="estado">
+            <option value="">--Seleccionar Estado de la tarea---</option>
+            <option value="esperando">Esperando</option>
+            <option value="progreso">Progreso</option>
+            <option value="finalizado">Finalizado</option>
+          </select>
+            </div>
+            <hr>
             <div class="group">
               <label for="title">fecha de inicio</label>
               <input type="text" name="date" class="tcal" value="" id="tiempo" />

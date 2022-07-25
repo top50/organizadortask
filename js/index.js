@@ -10,19 +10,22 @@ import {
 const btn_task = document.querySelector("#btn_button"),
 myform=document.getElementById('task-form'),
 clear=document.getElementById('reset'),
-  mode = document.querySelector("#modalnewtarea");
-
+mode = document.querySelector("#modalnewtarea")
 btn_task.addEventListener("click", function () {
   mode.classList.toggle("mostrar-form");
   mode.classList.toggle("ocultar-form");
 });
 //Constantes para el evento del boton para llamar al aside mode, limpiar formulario myform
-const containertask = document.getElementById("task-tarea");
+const mytask = document.getElementById("task-tarea");
+let enespeTask=document.getElementById("Espera");
+let enProgreso=document.getElementById("Progreso");
+let fiNalizado=document.getElementById("Finalizado");
 let editStatus = false;
 let id = "";
+let card ="";
 window.addEventListener("DOMContentLoaded", async () => {
   onGetTasks((querySnapshot) => {
-    let html = "";
+    
     querySnapshot.forEach((doc) => {
       console.log(doc.data());
       const data = doc.data();
@@ -33,30 +36,36 @@ window.addEventListener("DOMContentLoaded", async () => {
       let rest = Math.abs(fechauno - fechados);
       let days = rest / (1000 * 3600 * 24);
       days--;
-   
-      console.log(days);
-      html += `
-  <div class="card" draggable="true" ondragstart="onDragStart(event);" id="${doc.id}">
+
+     console.log(days);
+      card += `
+  <div class="card" draggable="true" ondragstart="onDragStart(event);" id="${data.id}">
   <h3>${data.title}</h3>
   <h4>Responsable : ${data.responsable}</h4>
   <p class="nuevatarea">${data.nuevatarea}</p>
   <p class="tiempoentrega"> Inicio: ${data.tiempo} Tiempo de Entrega: ${data.tiempofinal}</p>
   <p class="limite">Faltan ${days} dias para la entrega</p>
+  <h3>${data.estado}</h3>
   <button class='button btn-delete' data-id="${doc.id}">Delete</button>
   <button class='button btn-update' id="update" data-id="${doc.id}">Update</button>
   </div>
-  `;
-    });
+  `
+  ;
+mytask.innerHTML = card;
+
+});
     //function para recorrer la base de datos tasks y listarlas , se agrega la draggable true para realizar los eventos de arrastre 
-    containertask.innerHTML = html; //se pintan los resultados de la consulta en el div contarinertask
-    const btn_delete = containertask.querySelectorAll(".btn-delete");
+     //se pintan los resultados de la consulta en el div contarinertask
+   
+// botones //
+    const btn_delete = mytask.querySelectorAll(".btn-delete");
     btn_delete.forEach((btn) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
         deleteTask(dataset.id);
       });
     });
 //function para eliminar una tarea utilizando u foreEach para recorrer los id correspondientes
-    const btnedit = containertask.querySelectorAll(".btn-update")
+    const btnedit = mytask.querySelectorAll(".btn-update")
          
 
     btnedit.forEach((btn) => {
@@ -66,6 +75,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         taskform["task-title"].value = task.title;
         taskform["responsable"].value= task.responsable;
         taskform["nuevatarea"].value = task.nuevatarea;
+        taskform["estado"].value= task.estado;
         taskform["tiempo"].value = task.tiempo;
         taskform["tiempofinal"].value = task.tiempofinal;
         editStatus = true;
@@ -83,6 +93,7 @@ taskform.addEventListener("submit", (e) => {
   const title = taskform["task-title"],
     responsable=taskform["responsable"],
     nuevatarea = taskform["nuevatarea"],
+    estado=taskform["estado"],
     tiempo = taskform["tiempo"],
     tiempofinal = taskform["tiempofinal"];
   if (!editStatus) {
@@ -90,6 +101,7 @@ taskform.addEventListener("submit", (e) => {
       title.value,
       responsable.value,
       nuevatarea.value,
+      estado.value,
       tiempo.value,
       tiempofinal.value
     );
@@ -98,6 +110,7 @@ taskform.addEventListener("submit", (e) => {
       title: title.value,
       responsable: responsable.value,
       nuevatarea: nuevatarea.value,
+      estado: estado.value,
       tiempo: tiempo.value,
       tiempofinal: tiempofinal.value,
 
@@ -107,6 +120,7 @@ taskform.addEventListener("submit", (e) => {
     title.value = "";
     responsable.value="";
     nuevatarea.value = "";
+    estado.value = "";
     tiempo.value =" ";
     tiempofinal.value =" ";
     mode.classList.toggle("ocultar-form");
@@ -114,14 +128,17 @@ taskform.addEventListener("submit", (e) => {
   title.value = "";
   responsable.value="";
   nuevatarea.value = "";
+  estado.value=" ";
   tiempo.value =" ";
   tiempofinal.value =" ";
+
 });
 // se crea la funcion agregar del formulario tareas y con un if se establece si es nueva tarea o se va a realizar un actualizacion, cuando desde la tarjeta se preciona el evento botn actualuzar (update) ytilizando el mism boton
 
 const title = myform["task-title"],
     responsable = myform["responsable"],
     nuevatarea = myform["nuevatarea"],
+    estado=myform['estado'],
     tiempo = myform["tiempo"],
     tiempofinal = myform["tiempofinal"];
 clear.addEventListener('click',(e)=>{
@@ -129,7 +146,20 @@ clear.addEventListener('click',(e)=>{
     title.value = "";
     responsable.value = "";
     nuevatarea.value = "";
+    estado.value=" ";
     tiempo.value = " ";
     tiempofinal.value = " ";
+    mode.classList.toggle("ocultar-form");
 })
 //creo el evento boton para el formulario nueva tarea para limpiar los inputs..
+if(data.estado === "esperando"){
+   
+  enespeTask.appendChild(mytask);   
+}
+if(data.estado === "progreso"){
+  enProgreso.appendChild(mytask);
+}
+
+if(data.estado === "finalizado"){
+fiNalizado.appendChild(mytask);
+}
