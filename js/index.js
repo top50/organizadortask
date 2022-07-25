@@ -151,15 +151,4 @@ clear.addEventListener('click',(e)=>{
     tiempofinal.value = " ";
     mode.classList.toggle("ocultar-form");
 })
-//creo el evento boton para el formulario nueva tarea para limpiar los inputs..
-if(data.estado === "esperando"){
-   
-  enespeTask.appendChild(mytask);   
-}
-if(data.estado === "progreso"){
-  enProgreso.appendChild(mytask);
-}
-
-if(data.estado === "finalizado"){
-fiNalizado.appendChild(mytask);
-}
+//creo el evento boton para el formulario nueva tarea para limpiar los inputs..//
