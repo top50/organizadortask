@@ -36,21 +36,34 @@
   </header>
   <main class="main">
     <div class="container">
+<<<<<<< HEAD
       <div class="row" id="card_zone">
       
         <section id="dropzone" class="dropzone">
+=======
+      <div class="row">
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" id="Espera" >
+>>>>>>> 174bc04f425435381e9149b6b6410d2fb103c3d9
           <div class="titulo">
             <h1>Tarea</h1>
           </div>
           <div id="esperando" class="task-tarea"></div>
         </section>
+<<<<<<< HEAD
         <section  id="dropzone">
+=======
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);" id="Progreso">
+>>>>>>> 174bc04f425435381e9149b6b6410d2fb103c3d9
           <div class="titulo">
             <h1>Progreso</h1>
           </div>
           <div id="progreso" class="task-tarea"></div>
         </section>
+<<<<<<< HEAD
         <section class="dropzone" id="dropzone">
+=======
+        <section ondragover="onDragOver(event);" ondrop="onDrop(event);"  id="Finalizado">
+>>>>>>> 174bc04f425435381e9149b6b6410d2fb103c3d9
           <div class="titulo">
             <h1>Finalizado</h1>
           </div>
@@ -87,6 +100,7 @@
               <textarea name="newtask" id="nuevatarea" cols="30" rows="10" required></textarea>
             </div>
             <div class="group">
+<<<<<<< HEAD
               <label for="title">Estado de la  Tarea</label>
           <select name="estado" id="estado" required>
             <option value="">--Seleccionar estado tarea---</option>
@@ -96,6 +110,17 @@
           </select>
             </div>
 
+=======
+              <label for="title">Estado de la tarea</label>
+          <select name="estado" id="estado">
+            <option value="">--Seleccionar Estado de la tarea---</option>
+            <option value="esperando">Esperando</option>
+            <option value="progreso">Progreso</option>
+            <option value="finalizado">Finalizado</option>
+          </select>
+            </div>
+            <hr>
+>>>>>>> 174bc04f425435381e9149b6b6410d2fb103c3d9
             <div class="group">
               <label for="title">fecha de inicio</label>
               <input type="text" name="date" class="tcal" value="" id="tiempo" required />

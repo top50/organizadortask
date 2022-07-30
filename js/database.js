@@ -79,8 +79,21 @@ variables y constatantes
     location.reload();
 }, 2500);
 
+<<<<<<< HEAD
  }).catch((error)=>{
   alert('Error al actualizar la tarea');
  });
   
     
+=======
+export const savetask=(title,responsable,nuevatarea,estado,tiempo,tiempofinal)=>
+addDoc(collection(db,'tasks'), {title,responsable,nuevatarea,estado,tiempo,tiempofinal})
+export const getTasks=()=>getDocs(collection(db,'tasks'));
+
+export const onGetTasks =(callback)=>onSnapshot(collection(db,'tasks'),callback)
+
+export const deleteTask= (id) =>deleteDoc(doc(db,'tasks',id))
+
+export const  getTask=id=>getDoc(doc(db,'tasks',id))
+export const updatetask=(id,newFields)=>updateDoc(doc(db,'tasks',id),newFields)
+>>>>>>> 174bc04f425435381e9149b6b6410d2fb103c3d9
