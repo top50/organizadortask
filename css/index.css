@@ -1,6 +1,343 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('theme.css');
-@import url('header.css');
-@import url('card.css');
-@import url('form.css');
 @import url('../js/tcal.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row {
+    display: flex;
+    max-width: 100%rem;
+    margin: 0 auto;
+}
+
+section {
+    display: flex;
+    margin: 5px 7px;
+    width: 100%;
+    background: #fbfbfb;
+
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.aside {
+    width:auto;
+    display: flex;
+    background: #ffffff;
+    box-shadow: -2px 4px 9px #69696994;
+height: auto;
+}
+
+.mostrar-form {
+ left: 0px;
+ transition: .2s;
+}
+
+.ocultar-form {
+    position: relative;
+   left: 500px;
+   transition: .2s;
+
+}
+
+
+@media(max-width:68rem) {
+    .row {
+        flex-wrap: wrap;
+       
+    }
+
+    .main {
+        flex-wrap: wrap-reverse;
+    }
+}
+header{
+    background-image: linear-gradient(to right top, #0066ff, #5b5cff, #854ffc, #a83bf5, #c712eb);
+    box-shadow: 0px 2px 6px #05050586;
+    margin-bottom: 5px;
+}
+.logo{
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+}
+.logo svg{
+    width: 45px;
+    fill: rgb(255, 255, 255);   
+}
+.titulo-header{
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+.titulo-header h3{
+    font-size: 35px;
+    color: #41b3ff;
+    text-shadow: 1px 2px 1px #fbff00b0;
+}
+.area-button-task{
+    display: inline;
+    padding: 5px;
+}
+.succcess{
+    background: #67ff41;
+    animation: colores;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s ;
+    color: aliceblue;
+}
+.succcess:hover{
+    background: #54d634;
+    
+ 
+}
+@keyframes colores {
+    0%{
+        background: #41b3ff;
+    }
+    25%{
+        background: #67ff41;
+    }
+    50%{
+        background: #3aff09;
+    }
+    75%{
+        background: #0680d1;
+    }
+    100%{
+        background: #0c4972;
+    }
+}
+@media(max-width:64rem){
+    .logo{
+flex-wrap: wrap;
+align-items: center;
+    
+    }
+}
+
+
+.form-nueva-tarea{
+    background: #ffffff;
+    padding: 5px;
+}
+.form-container{
+    width: 100%;
+    min-height: auto;
+    height: 100%;
+}
+.group{
+    display: block;
+    margin: 3px;
+    padding-bottom: 3px;
+    
+}
+.group>label{
+    font-size: 15px;
+    font-weight: 300;
+    color: #868686;
+    margin-bottom: 5px;
+}
+.group>input[type=text]{
+    padding: 6px;
+    border: solid 1px #e8e8e8;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 3px 6px hsla(0, 0%, 75%, 0.68);
+    font-size: 15px;
+    color: rgb(121, 121, 121);
+}
+.group>input[type=date]{
+    background: #53ffc8;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    font-size: 15px;
+    transition: all 0.25s ease;
+}
+.group>[type=date]:hover{
+    background: #B1E8CD;
+}
+.group>select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.group>select{
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 10px;
+    height: 42px;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    font-size: 15px;
+    color: rgb(121, 121, 121);
+    background: #53ffc8;
+    position: relative;
+    transition: all 0.25s ease;
+}
+.group>select::-ms-expand{
+    display: none;
+}
+.group>select:hover{
+    background: #B1E8CD;
+}
+.group>select i{
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 13px);
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-left: 4px solid #003a1d;
+    border-bottom: 4px solid #003a1d;
+    transform: rotate(-45deg);
+    transition: all 0.25s ease;
+}
+.group>select i:hover{
+    margin-top: 3px;
+}
+.group textarea{
+    width: 100%;
+    border: 0.1px solid #f3f3f3;
+    background: #f7f7f7c9;
+    border-radius: 6px;
+    color: #868686;
+    font-size: 15px;
+}
+.button{
+border: none;
+padding: 10px;
+border-radius: 5px;
+cursor: pointer;
+transition: .2s ease-out;
+font-size: 15px;
+cursor: pointer;
+transition: .4s;
+}
+.primario{
+    background: #00e69d;
+    color: white;
+}
+.primario:hover{
+    background: #019164;
+}
+.secundario{
+    background: #ff2977;
+    color: white;
+}
+.secundario:hover{
+    background: #cb0e54;
+}
+
+
+/*formulario emergente*/
+
+.titulo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.titulo h1{
+    font-size: 35px;
+    color: blueviolet;
+}
+.task-tarea{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.card{
+    width: 350px;
+    display: block;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 9px;
+    box-shadow: 2px 3px 8px #8f8f8f69;
+    margin-bottom: 5px;
+    cursor: cell;
+   
+}
+
+.card h3{
+    font-size: 20px;
+    font-weight: 500;
+    color: #8f8f8f;
+}
+.card h4{
+    font-size: 15px;
+    color: blueviolet;
+    font-weight: 400;
+}
+.nuevatarea{
+    display: flex;
+    text-align: justify;
+    font-size: 14px;
+    color: #8f8f8f;
+    line-height:19px ;
+    margin-bottom: 9px;
+}
+.tiempoentrega{
+    display: flex;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+    color: blue;
+}
+.limite{
+    display: flex;
+    text-align: center;
+    font-size: 18px;
+    color: #1eaa7b;
+    margin-bottom: 5px;
+}
+.btn-delete{
+    background: #ec0794;
+    color: white;
+}
+.btn-delete:hover{
+    background: #b90675;
+}
+.btn-update{
+    background: #1eaa7b;
+    color: white;
+}
+.btn-update:hover{
+    background: #0e835c;
+}
+.closed{
+    cursor: pointer;
+}
+
